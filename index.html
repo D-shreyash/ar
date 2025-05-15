@@ -1,31 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AR.js H2O Model</title>
-  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-  <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.js"></script>
-  <style>
-    body { margin: 0; overflow: hidden; }
-    a-scene { width: 100%; height: 100vh; }
-  </style>
-</head>
-<body>
-  <a-scene embedded arjs>
-    <!-- Marker to detect (e.g., 'hiro') -->
-    <a-marker preset="hiro">
-      <!-- Load H2O GLB model -->
-      <a-gltf-model 
-        src="https://cdn.glitch.global/122bfdf9-21f8-46cf-8d61-cb1df3173802/H2O%20(1).glb?v=1747317635556" 
-        scale="0.5 0.5 0.5" 
-        position="0 0 0" 
-        rotation="0 0 0">
-      </a-gltf-model>
-    </a-marker>
-
-    <!-- Camera -->
-    <a-entity camera></a-entity>
-  </a-scene>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>AR.js H2O Model</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.min.js"></script>
+    <style>
+      body { margin: 0; overflow: hidden; }
+      a-scene { width: 100%; height: 100vh; }
+    </style>
+  </head>
+  <body>
+    <a-scene embedded arjs>
+      <a-marker preset="hiro">
+        <a-gltf-model 
+          src="https://cdn.glitch.global/122bfdf9-21f8-46cf-8d61-cb1df3173802/H2O.glb?v=1747317635556"
+          type="model/gltf-binary"
+          scale="0.1 0.1 0.1"
+          position="0 0.1 0"
+          rotation="-90 0 0">
+        </a-gltf-model>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
 </html>
