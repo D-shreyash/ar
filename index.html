@@ -2,58 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>AR.js H2O Model</title>
+  <title>Simple AR Cube</title>
   <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/ar.js@3.4.2/aframe/build/aframe-ar.min.js"></script>
   <style>
-    body, html { margin: 0; padding: 0; overflow: hidden; height: 100%; }
-    #viewButton {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 12px 24px;
-      font-size: 18px;
-      background: #1e90ff;
-      border: none;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-      z-index: 10;
-    }
+    body, html { margin: 0; overflow: hidden; height: 100%; }
   </style>
 </head>
 <body>
-
-<a-scene
-  embedded
-  arjs="sourceType: webcam; debugUIEnabled: false;"
-  vr-mode-ui="enabled: false"
-  renderer="logarithmicDepthBuffer: true; antialias: true"
->
-  <!-- Marker -->
-  <a-marker
-    type="pattern"
-    url="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.2/three.js/data/patt.hiro"
-  >
-    <!-- Lighting for better visibility -->
-    <a-light type="ambient" color="#ffffff" intensity="0.6"></a-light>
-    <a-light type="directional" position="0 1 1" intensity="0.8"></a-light>
-
-    <!-- Your 3D Model -->
-    <a-entity
-      gltf-model="https://cdn.glitch.global/122bfdf9-21f8-46cf-8d61-cb1df3173802/H2O.glb?v=1747317635556"
-      scale="0.2 0.2 0.2"
-      position="0 0 0"
-      rotation="0 0 0"
-    ></a-entity>
-  </a-marker>
-
-  <!-- Camera -->
-  <a-entity camera></a-entity>
-</a-scene>
-
-<button id="viewButton" onclick="window.open(window.location.href, '_blank')">View in AR</button>
-
+  <a-scene embedded arjs="sourceType: webcam;">
+    <a-marker preset="hiro">
+      <a-box position="0 0.5 0" rotation="0 45 0" color="red" scale="0.5 0.5 0.5"></a-box>
+    </a-marker>
+    <a-entity camera></a-entity>
+  </a-scene>
 </body>
 </html>
