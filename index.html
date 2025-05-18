@@ -14,27 +14,43 @@
       device-orientation-permission-ui="enabled:true"
     >
       <a-assets>
-        <a-asset-item id="model" src="https://res.cloudinary.com/dfzmx7rgc/raw/upload/v1747571270/C60.glb"></a-asset-item>
+        <a-asset-item id="model"></a-asset-item>
       </a-assets>
+
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <a-entity mindar-image-target="targetIndex:0">
-        <a-entity 
-          id="rotating-model" 
-          animation="property: rotation; to: 0 360 0; loop: true; dur: 4000; easing: linear">
-          
-          <a-gltf-model 
-            src="#model" 
-            position="0 0 0" 
-            rotation="0 0 0" 
-            scale="0.5 0.5 0.5">
-          </a-gltf-model>
-
-        </a-entity> 
+        <a-entity
+          id="rotating-model"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 4000; easing: linear"
+        >
+          <a-gltf-model
+            id="model-viewer"
+            src="#model"
+            position="0 0 0"
+            rotation="0 0 0"
+            scale="0.5 0.5 0.5"
+          ></a-gltf-model>
+        </a-entity>
       </a-entity>
     </a-scene>
 
     <script>
+      function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+
+      const modelUrl = getQueryParam("model");
+
+      if (!modelUrl) {
+        alert("No model URL provided!");
+      } else {
+        const assetItem = document.getElementById("model");
+        assetItem.setAttribute("src", modelUrl);
+        console.log("🔗 Model URL set to:", modelUrl);
+      }
+
       const scene = document.querySelector("a-scene");
       scene.addEventListener("loaded", () => console.log("Scene loaded"));
 
@@ -46,4 +62,3 @@
     </script>
   </body>
 </html>
-
